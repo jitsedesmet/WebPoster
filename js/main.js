@@ -55,11 +55,12 @@ const switchToZoomMode = () => {
 
     wrapper.style.width = '841px';
     wrapper.style.height = '1189px';
+    wrapper.style.margin = 'auto';
 
     const { innerWidth, innerHeight } = window;
     const { offsetWidth, offsetHeight } = poster;
     const fullScale = 1 / Math.max(offsetWidth / innerWidth, offsetHeight / innerHeight);
-    wrapper.style.transformOrigin = 'center center';
+    wrapper.style.transformOrigin = 'top center';
     wrapper.style.transform = `scale(${fullScale})`;
 }
 
