@@ -1,6 +1,7 @@
 services:
   web:
-    image: ghcr.io/jitsedesmet/2026-eswc-demo-traqula:latest
+#   Change this iri to represent your repo
+    image: ghcr.io/smessie/webposter:latest
     build:
       dockerfile: Dockerfile
     ports:

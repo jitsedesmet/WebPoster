@@ -1,4 +1,4 @@
-name: Build might Deploy
+name: Build Pages
 
 on:
   workflow_call:
@@ -6,11 +6,13 @@ on:
       deploy:
         required: true
         type: boolean
+        default: false
+  push:
+  pull_request:
 
 permissions:
   contents: read
-  pages: write
-  id-token: write
+  pages: read
 
 jobs:
   build:
@@ -43,15 +45,3 @@ jobs:
         uses: actions/upload-pages-artifact@v4
         with:
           path: './dist'
-
-  deploy:
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
-    runs-on: ubuntu-latest
-    needs: build
-    steps:
-      - name: Deploy to GitHub Pages
-        if: ${{ inputs.deploy == true }}
-        id: deployment
-        uses: actions/deploy-pages@v4
